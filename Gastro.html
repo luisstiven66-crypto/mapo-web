@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Los Sabores de Mapo</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background: linear-gradient(135deg,#1f1c2c,#928dab);
+    color:#333;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    width:100%;
+    background:rgba(0,0,0,0.85);
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+}
+
+nav h1{
+    color:white;
+}
+
+nav button{
+    background:#ff6b6b;
+    border:none;
+    padding:8px 15px;
+    margin-left:10px;
+    border-radius:20px;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+nav button:hover{
+    background:#ff4757;
+}
+
+/* HERO CON IMAGEN */
+.hero{
+    height:100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1350&q=80');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+.hero h1{
+    font-size:4em;
+    margin:10px 0;
+    background: linear-gradient(90deg,#ff6b6b,#feca57);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    font-size:18px;
+    margin-top:10px;
+}
+
+/* VISIÓN */
+.vision{
+    padding:80px 50px;
+    background: linear-gradient(135deg,#ff6b6b,#feca57);
+    color:white;
+    text-align:center;
+}
+
+.vision h2{
+    font-size:2.5em;
+    margin-bottom:20px;
+}
+
+.vision p{
+    font-size:18px;
+    max-width:800px;
+    margin:auto;
+    line-height:1.6;
+}
+
+/* RECETAS */
+.container{
+    padding:80px 50px 50px 50px;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h3{
+    color:#ff6b6b;
+    margin-bottom:10px;
+}
+
+.card p{
+    font-size:14px;
+    color:#555;
+}
+
+/* CONTACTO */
+.contacto{
+    padding:80px 50px;
+    background:white;
+    text-align:center;
+}
+
+.contacto h2{
+    font-size:2.5em;
+    margin-bottom:20px;
+    color:#ff6b6b;
+}
+
+.contacto p{
+    margin-bottom:20px;
+    color:#555;
+}
+
+.contacto a{
+    color:#ff6b6b;
+    text-decoration:none;
+}
+
+.contacto a:hover{
+    text-decoration:underline;
+}
+
+.formulario{
+    max-width:600px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.formulario input,
+.formulario textarea{
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    font-size:14px;
+    outline:none;
+    transition:0.3s;
+}
+
+.formulario input:focus,
+.formulario textarea:focus{
+    border-color:#ff6b6b;
+    box-shadow:0 0 8px rgba(255,107,107,0.4);
+}
+
+.formulario button{
+    padding:15px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(90deg,#ff6b6b,#ff4757);
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.formulario button:hover{
+    transform:scale(1.05);
+}
+
+.mensaje-exito{
+    margin-top:15px;
+    color:green;
+    font-weight:500;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:#111;
+    color:white;
+}
+</style>
+</head>
+<body>
+
+<nav>
+    <h1>🍽 Los Sabores de Mapo</h1>
+    <div>
+        <button onclick="filtrar('todos')">Todos</button>
+        <button onclick="filtrar('entradas')">Entradas</button>
+        <button onclick="filtrar('principales')">Principales</button>
+        <button onclick="filtrar('postres')">Postres</button>
+        <button onclick="document.getElementById('contacto').scrollIntoView()">Contacto</button>
+    </div>
+</nav>
+
+<header class="hero">
+    <div>
+        <h1>Los Sabores de Mapo</h1>
+        <p>Una experiencia culinaria que conecta culturas</p>
+    </div>
+</header>
+
+<!-- SECCIÓN VISIÓN -->
+<section class="vision">
+    <div class="vision-contenido">
+        <h2>Nuestra Visión</h2>
+        <p>Ser un referente gastronómico que conecta culturas a través del sabor, ofreciendo experiencias culinarias memorables y promoviendo la creatividad en la cocina.</p>
+    </div>
+</section>
+
+<section class="container">
+
+<!-- ENTRADAS -->
+<div class="card entradas"><h3>Gazpacho</h3><p>Sopa fría española.</p></div>
+<div class="card entradas"><h3>Empanadas</h3><p>Rellenas de carne o queso.</p></div>
+<div class="card entradas"><h3>Falafel</h3><p>Bolas fritas de garbanzo.</p></div>
+<div class="card entradas"><h3>Ceviche</h3><p>Pescado marinado en limón.</p></div>
+<div class="card entradas"><h3>Sushi</h3><p>Rollos japoneses tradicionales.</p></div>
+
+<!-- PRINCIPALES -->
+<div class="card principales"><h3>Paella</h3><p>Arroz con mariscos.</p></div>
+<div class="card principales"><h3>Tacos al Pastor</h3><p>Carne marinada con piña.</p></div>
+<div class="card principales"><h3>Lasaña</h3><p>Pasta en capas con carne.</p></div>
+<div class="card principales"><h3>Ramen</h3><p>Sopa japonesa con fideos.</p></div>
+<div class="card principales"><h3>Risotto</h3><p>Arroz cremoso italiano.</p></div>
+<div class="card principales"><h3>Pad Thai</h3><p>Fideos tailandeses salteados.</p></div>
+<div class="card principales"><h3>Curry</h3><p>Guiso especiado con arroz.</p></div>
+<div class="card principales"><h3>Churrasco</h3><p>Carne asada jugosa.</p></div>
+<div class="card principales"><h3>Hamburguesa</h3><p>Clásica con queso y vegetales.</p></div>
+<div class="card principales"><h3>Pizza Margarita</h3><p>Tomate, mozzarella y albahaca.</p></div>
+
+<!-- POSTRES -->
+<div class="card postres"><h3>Tiramisú</h3><p>Postre italiano con café.</p></div>
+<div class="card postres"><h3>Brownies</h3><p>Chocolate suave y húmedo.</p></div>
+<div class="card postres"><h3>Pancakes</h3><p>Tortitas con miel.</p></div>
+<div class="card postres"><h3>Mousse de Chocolate</h3><p>Ligero y cremoso.</p></div>
+<div class="card postres"><h3>Cheesecake</h3><p>Tarta cremosa de queso.</p></div>
+
+</section>
+
+<section class="contacto" id="contacto">
+    <h2>Contáctanos</h2>
+    <p>¿Tienes una sugerencia o receta? Escríbenos 👇</p>
+
+    <p><strong>Contactos directos:</strong></p>
+    <p>María Jara — <a href="mailto:maria.jaraa@cun.edu.co">maria.jaraa@cun.edu.co</a></p>
+    <p>Paola Zapata — <a href="mailto:Paola.zapata@cun.edu.co">Paola.zapata@cun.edu.co</a></p>
+
+    <form class="formulario" onsubmit="enviarFormulario(event)">
+        <input type="text" placeholder="Tu nombre" required>
+        <input type="email" placeholder="Tu correo electrónico" required>
+        <textarea rows="5" placeholder="Escribe tu mensaje..." required></textarea>
+        <button type="submit">Enviar Mensaje</button>
+        <div class="mensaje-exito" id="mensajeExito"></div>
+    </form>
+</section>
+
+<footer>
+© 2026 Los Sabores de Mapo | Experiencia gastronómica internacional 🌎
+</footer>
+
+<script>
+function filtrar(categoria){
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        if(categoria === 'todos'){
+            card.style.display = 'block';
+        } else {
+            card.style.display = card.classList.contains(categoria) ? 'block' : 'none';
+        }
+    });
+}
+
+function enviarFormulario(event){
+    event.preventDefault();
+    document.getElementById("mensajeExito").innerText =
+    "✅ ¡Mensaje enviado correctamente! Te responderemos pronto.";
+}
+</script>
+
+</body>
+</html>
